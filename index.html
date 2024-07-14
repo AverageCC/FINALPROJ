@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set character encoding to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Ensure proper rendering and touch zooming on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
+    <title>AI YouTube Content Creator</title>
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- Banner section with an image -->
+    <div class="banner">
+        <img src="ai_banner.jpg" alt="Banner Image">
+    </div> 
+    
+    <!-- Header section with logo and navigation menu -->
+    <header>
+        <div class="logo-nav">
+            <!-- Logo container -->
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <!-- Navigation menu -->
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li> 
+                    <li><a href="tools.html">AI Tools</a></li> 
+                    <li><a href="learn.html">Learn</a></li> 
+                </ul>
+            </nav>
+        </div>
+        <!-- Search bar for the website -->
+        <div class="search-bar">
+            <form onsubmit="handleSearch(event)">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+        <!-- About Me section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi! I'm Joey Monroe from Phoenix, AZ. I'm studying Advancing Computer Science and Digital Maker Fabrication. I love programming, making YouTube videos, and forex trading. In my free time, I enjoy traveling, cooking, and hanging out with friends and family. I’m always excited to learn new things and share my journey with others. Feel free to connect with me!</p>
+        </section>
+
+        <!-- General Information about AI section -->
+        <section id="info">
+            <h2>General Information about AI</h2>
+            <p>Artificial Intelligence (AI) has become integral to various aspects of modern life, transforming industries and enhancing daily experiences. It powers advancements in healthcare through predictive diagnostics and personalized medicine, streamlines operations in finance with algorithmic trading and fraud detection, and revolutionizes customer service with chatbots and virtual assistants. AI also plays a crucial role in driving autonomous vehicles and optimizing supply chains. As AI continues to evolve, it promises to bring even more innovative solutions and efficiencies across multiple sectors, making it a cornerstone of technological progress in today's world.</p>
+        </section>
+    </main>
+
+    <!-- Mailing List section -->
+    <section id="mailing-list">
+        <h2>Join Our Mailing List</h2>
+        <p>Subscribe to get the latest updates, tutorials, and AI news delivered straight to your inbox!</p>
+        <form id="mailing-list-form">
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-content">
+            <p>Subscribe to our YouTube channel:</p>
+            <a href="https://www.youtube.com/@The-Artificial-Creator" target="_blank">
+                <img src="youtube-logo.png" alt="YouTube Logo" class="youtube-logo">
+            </a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for search functionality -->
+    <script>
+        function handleSearch(event) { // Function to handle search functionality
+            event.preventDefault(); // Prevent default form submission
+            var query = document.getElementById('search-input').value.toLowerCase(); // Get the search query and convert to lowercase
+            var content = document.querySelectorAll('main p, main h2'); // Get all paragraphs and headings in the main content
+
+            content.forEach(function(element) { // Loop through each element
+                var innerHTML = element.innerHTML; // Get the inner HTML of the element
+                var regex = new RegExp('<span class="highlight">(.*?)</span>', 'gi'); // Create a regex to match highlighted text
+                innerHTML = innerHTML.replace(regex, '$1'); // Remove existing highlights
+                element.innerHTML = innerHTML; // Update the element's inner HTML
+            });
+
+            if (query) { // If a search query is present
+                content.forEach(function(element) { // Loop through each element
+                    var innerHTML = element.innerHTML; // Get the inner HTML of the element
+                    var index = innerHTML.toLowerCase().indexOf(query); // Find the index of the query in the content
+                    if (index !== -1) { // If the query is found
+                        innerHTML = innerHTML.substring(0, index) + '<span class="highlight">' + innerHTML.substring(index, index + query.length) + '</span>' + innerHTML.substring(index + query.length); // Highlight the query
+                        element.innerHTML = innerHTML; // Update the element's inner HTML
+                    }
+                });
+            }
+        }
+
+        document.getElementById('mailing-list-form').addEventListener('submit', function(event) { // Event listener for form submission
+            event.preventDefault(); // Prevent default form submission
+            alert('Thank you for subscribing!'); // Display a thank you message
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set character encoding to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Ensure proper rendering and touch zooming on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
+    <title>Learn</title>
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- Banner section with an image -->
+    <div class="banner">
+        <img src="ai_banner.jpg" alt="Banner Image">
+    </div> 
+    
+    <!-- Header section with logo and navigation menu -->
+    <header>
+        <div class="logo-nav">
+            <!-- Logo container -->
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <!-- Navigation menu -->
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li> 
+                    <li><a href="tools.html">AI Tools</a></li> 
+                    <li><a href="learn.html">Learn</a></li> 
+                </ul>
+            </nav>
+        </div>
+        <!-- Search bar for the website -->
+        <div class="search-bar">
+            <form onsubmit="handleSearch(event)">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+        <!-- Learn section -->
+        <section id="learn">
+            <h2>Learn</h2>
+            <!-- Filter input for learn modules -->
+            <input type="text" id="filter-input-learn" onkeyup="filterLearn()" placeholder="Filter learn modules by name...">
+            <div class="learn-container" id="learn-container">
+                <!-- Learn card for Prompt Engineering -->
+                <a href="Learn Modules/prompt-engineering.html" class="learn-card-style">
+                    <div class="learn-thumbnail">
+                        <img src="Thumbnails/prompt-engineering-thumbnail.jpg" alt="Prompt Engineering Thumbnail">
+                    </div>
+                    <div class="learn-content">
+                        <h3>How to get the best responses using Prompt Engineering</h3>
+                        <p>Learn how to craft the best prompts to get accurate and useful responses from AI.</p>
+                        <div class="learn-how">Learn How →</div>
+                    </div>
+                </a>
+                <!-- Learn card for AI Assistant -->
+                <a href="Learn Modules/ai-assistant.html" class="learn-card-style">
+                    <div class="learn-thumbnail">
+                        <img src="Thumbnails/ai-assistant-thumbnail.jpg" alt="AI Assistant Thumbnail">
+                    </div>
+                    <div class="learn-content">
+                        <h3>How to create your own AI Assistant using ChatGPT and Python</h3>
+                        <p>Follow this tutorial to create a functional AI assistant using ChatGPT and Python.</p>
+                        <div class="learn-how">Learn How →</div>
+                    </div>
+                </a>
+                <!-- Learn card for ChatGPT Free -->
+                <a href="Learn Modules/chatgpt-free.html" class="learn-card-style">
+                    <div class="learn-thumbnail">
+                        <img src="Thumbnails/chatgpt-free-thumbnail.jpg" alt="ChatGPT Free Thumbnail">
+                    </div>
+                    <div class="learn-content">
+                        <h3>How to get ChatGPT for free</h3>
+                        <p>Discover ways to access ChatGPT without any cost.</p>
+                        <div class="learn-how">Learn How →</div>
+                    </div>
+                </a>
+                <!-- Learn card for Adobe FireFly -->
+                <a href="Learn Modules/adobe-firefly.html" class="learn-card-style">
+                    <div class="learn-thumbnail">
+                        <img src="Thumbnails/adobe-firefly-thumbnail.png" alt="Adobe FireFly Thumbnail">
+                    </div>
+                    <div class="learn-content">
+                        <h3>How Adobe FireFly can improve your edits</h3>
+                        <p>Explore how Adobe FireFly can enhance your graphic design and editing projects.</p>
+                        <div class="learn-how">Learn How →</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-content">
+            <p>Subscribe to our YouTube channel:</p>
+            <a href="https://www.youtube.com/@The-Artificial-Creator" target="_blank">
+                <img src="youtube-logo.png" alt="YouTube Logo" class="youtube-logo">
+            </a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for search and filter functionality -->
+    <script>
+        function handleSearch(event) { // Function to handle search functionality
+            event.preventDefault(); // Prevent default form submission
+            var query = document.getElementById('search-input').value.toLowerCase(); // Get the search query and convert to lowercase
+            var content = document.querySelectorAll('main p, main h2'); // Get all paragraphs and headings in the main content
+
+            content.forEach(function(element) { // Loop through each element
+                var innerHTML = element.innerHTML; // Get the inner HTML of the element
+                var regex = new RegExp('<span class="highlight">(.*?)</span>', 'gi'); // Create a regex to match highlighted text
+                innerHTML = innerHTML.replace(regex, '$1'); // Remove existing highlights
+                element.innerHTML = innerHTML; // Update the element's inner HTML
+            });
+
+            if (query) { // If a search query is present
+                content.forEach(function(element) { // Loop through each element
+                    var innerHTML = element.innerHTML; // Get the inner HTML of the element
+                    var index = innerHTML.toLowerCase().indexOf(query); // Find the index of the query in the content
+                    if (index !== -1) { // If the query is found
+                        innerHTML = innerHTML.substring(0, index) + '<span class="highlight">' + innerHTML.substring(index, index + query.length) + '</span>' + innerHTML.substring(index + query.length); // Highlight the query
+                        element.innerHTML = innerHTML; // Update the element's inner HTML
+                    }
+                });
+            }
+        }
+
+        function filterLearn() { // Function to filter learn modules based on user input
+            var input, filter, learnContainer, learnCards, learnName, i, txtValue; // Declare variables
+            input = document.getElementById('filter-input-learn'); // Get the input element
+            filter = input.value.toLowerCase(); // Convert input to lowercase
+            learnContainer = document.getElementById('learn-container'); // Get the container of learn modules
+            learnCards = learnContainer.getElementsByClassName('learn-card-style'); // Get all learn cards
+
+            for (i = 0; i < learnCards.length; i++) { // Loop through all learn cards
+                learnName = learnCards[i].getElementsByClassName('learn-content')[0].getElementsByTagName('h3')[0]; // Get the learn module name
+                txtValue = learnName.textContent || learnName.innerText; // Get the text content of the learn module name
+                if (txtValue.toLowerCase().indexOf(filter) > -1) { // Check if the learn module name contains the filter
+                    learnCards[i].style.display = ""; // Display the learn card
+                } else { // If the learn module name does not contain the filter
+                    learnCards[i].style.display = "none"; // Hide the learn card
+                }
+            }
+        }
+    </script>
+</body>
+</html>

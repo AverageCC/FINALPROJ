@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set character encoding to UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Ensure proper rendering and touch zooming on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
+    <title>AI Tools</title>
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- Banner section with an image -->
+    <div class="banner">
+        <img src="ai_banner.jpg" alt="Banner Image">
+    </div> 
+    
+    <!-- Header section with logo and navigation menu -->
+    <header>
+        <div class="logo-nav">
+            <!-- Logo container -->
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <!-- Navigation menu -->
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li> 
+                    <li><a href="tools.html">AI Tools</a></li> 
+                    <li><a href="learn.html">Learn</a></li> 
+                </ul>
+            </nav>
+        </div>
+        <!-- Search bar for the website -->
+        <div class="search-bar">
+            <form onsubmit="handleSearch(event)">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+        <!-- AI Tools section -->
+        <section id="tools">
+            <h2>AI Tools</h2>
+            <!-- Filter input for tools -->
+            <input type="text" id="filter-input-tools" onkeyup="filterTools()" placeholder="Filter tools by name...">
+            <div class="tools-container" id="tools-container">
+                <!-- Tool card for ChatGPT -->
+                <a href="https://chatgpt.com" class="tool-card tools-card-style" target="_blank">
+                    <div class="tool-icon">
+                        <img src="Icons/chatgpt-icon.png" alt="ChatGPT Icon">
+                    </div>
+                    <div class="tool-content">
+                        <h3>ChatGPT</h3>
+                        <p>ChatGPT is an advanced AI language model capable of understanding and generating human-like text, making it ideal for conversational interfaces, content creation, and more.</p>
+                        <button class="try-button">Try it out</button>
+                    </div>
+                </a>
+                <!-- Tool card for Claude 3.5 Sonnet -->
+                <a href="https://claude.ai/new" class="tool-card tools-card-style" target="_blank">
+                    <div class="tool-icon">
+                        <img src="Icons/claude-icon.png" alt="Claude 3.5 Sonnet Icon">
+                    </div>
+                    <div class="tool-content">
+                        <h3>Claude 3.5 Sonnet</h3>
+                        <p>Claude 3.5 Sonnet is designed for generating creative writing, poetry, and narratives, providing unique and imaginative text outputs.</p>
+                        <button class="try-button">Try it out</button>
+                    </div>
+                </a>
+                <!-- Tool card for Adobe FireFly -->
+                <a href="https://firefly.adobe.com/" class="tool-card tools-card-style" target="_blank">
+                    <div class="tool-icon">
+                        <img src="Icons/adobe-firefly-icon.png" alt="Adobe FireFly Icon">
+                    </div>
+                    <div class="tool-content">
+                        <h3>Adobe FireFly</h3>
+                        <p>Adobe FireFly is a cutting-edge AI tool for graphic design and image editing, offering powerful features to enhance your visual projects.</p>
+                        <button class="try-button">Try it out</button>
+                    </div>
+                </a>
+                <!-- Tool card for Kyutai Moshi -->
+                <a href="https://us.moshi.chat/" class="tool-card tools-card-style" target="_blank">
+                    <div class="tool-icon">
+                        <img src="Icons/kyutai-moshi-icon.png" alt="Kyutai Moshi Icon">
+                    </div>
+                    <div class="tool-content">
+                        <h3>Kyutai Moshi</h3>
+                        <p>Kyutai Moshi is a one of a kind new AI tool with advanced AGI-like features. This is best suited for brainstorming.</p>
+                        <button class="try-button">Try it out</button>
+                    </div>
+                </a>
+                <!-- Tool card for LTX Studio -->
+                <a href="https://ltx.studio/" class="tool-card tools-card-style" target="_blank">
+                    <div class="tool-icon">
+                        <img src="Icons/ltx-studio-icon.png" alt="LTX Studio Icon">
+                    </div>
+                    <div class="tool-content">
+                        <h3>LTX Studio</h3>
+                        <p>LTX Studio is an innovative AI-driven tool designed for video editing and production, enabling creators to produce high-quality content with ease.</p>
+                        <button class="try-button">Try it out</button>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-content">
+            <p>Subscribe to our YouTube channel:</p>
+            <a href="https://www.youtube.com/@The-Artificial-Creator" target="_blank">
+                <img src="youtube-logo.png" alt="YouTube Logo" class="youtube-logo">
+            </a>
+        </div>
+    </footer>
+
+    <!-- JavaScript for search and filter functionality -->
+    <script>
+        function handleSearch(event) { // Function to handle search functionality
+            event.preventDefault(); // Prevent default form submission
+            var query = document.getElementById('search-input').value.toLowerCase(); // Get the search query and convert to lowercase
+            var content = document.querySelectorAll('main p, main h2'); // Get all paragraphs and headings in the main content
+
+            content.forEach(function(element) { // Loop through each element
+                var innerHTML = element.innerHTML; // Get the inner HTML of the element
+                var regex = new RegExp('<span class="highlight">(.*?)</span>', 'gi'); // Create a regex to match highlighted text
+                innerHTML = innerHTML.replace(regex, '$1'); // Remove existing highlights
+                element.innerHTML = innerHTML; // Update the element's inner HTML
+            });
+
+            if (query) { // If a search query is present
+                content.forEach(function(element) { // Loop through each element
+                    var innerHTML = element.innerHTML; // Get the inner HTML of the element
+                    var index = innerHTML.toLowerCase().indexOf(query); // Find the index of the query in the element's content
+                    if (index !== -1) { // If the query is found
+                        innerHTML = innerHTML.substring(0, index) + '<span class="highlight">' + innerHTML.substring(index, index + query.length) + '</span>' + innerHTML.substring(index + query.length); // Highlight the query
+                        element.innerHTML = innerHTML; // Update the element's inner HTML
+                    }
+                });
+            }
+        }
+
+        function filterTools() { // Function to filter tools based on user input
+            var input, filter, toolsContainer, toolCards, toolName, i, txtValue; // Declare variables
+            input = document.getElementById('filter-input-tools'); // Get the input element
+            filter = input.value.toLowerCase(); // Convert input to lowercase
+            toolsContainer = document.getElementById('tools-container'); // Get the container of tools
+            toolCards = toolsContainer.getElementsByClassName('tool-card'); // Get all tool cards
+
+            for (i = 0; i < toolCards.length; i++) { // Loop through all tool cards
+                toolName = toolCards[i].getElementsByClassName('tool-content')[0].getElementsByTagName('h3')[0]; // Get the tool name
+                txtValue = toolName.textContent || toolName.innerText; // Get the text content of the tool name
+                if (txtValue.toLowerCase().indexOf(filter) > -1) { // Check if the tool name contains the filter
+                    toolCards[i].style.display = ""; // Display the tool card
+                } else { // If the tool name does not contain the filter
+                    toolCards[i].style.display = "none"; // Hide the tool card
+                }
+            }
+        }
+    </script>
+</body>
+</html>

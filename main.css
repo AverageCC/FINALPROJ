@@ -1,0 +1,368 @@
+* { /* Styles for all elements */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { /* Styles for body section */
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.banner { /* Styles for banner section */
+    width: 100%;
+    height: 33vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img { /* Styles for banner image */
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+header { /* Styles for header section */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1f1f1f;
+    border-bottom: 2px solid #333;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo-nav { /* Styles for logo-nav section */
+    display: flex;
+    align-items: center;
+}
+
+.logo { /* Styles for logo section */
+    cursor: pointer;
+}
+
+.logo img { /* Styles for logo image */
+    height: 50px;
+    width: auto;
+}
+
+nav { /* Styles for nav section */
+    display: flex;
+    margin-left: 20px;
+}
+
+nav ul { /* Styles for nav links */
+    display: flex;
+    list-style: none;
+}
+
+nav ul li { /* Styles for nav links */
+    margin: 0 20px;
+}
+
+nav ul li a { /* Styles for nav links */
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover { /* Hover effect for nav links */
+    background-color: #ff4081;
+}
+
+.search-bar form { /* Styles for search bar form */
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input { /* Styles for search bar input */
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #444;
+    border-radius: 5px 0 0 5px;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.search-bar button { /* Styles for search bar button */
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #444;
+    border-radius: 0 5px 5px 0;
+    background-color: #ff4081;
+    color: #fff;
+    cursor: pointer;
+}
+
+main { /* Styles for main section */
+    padding: 20px;
+    flex: 1;
+}
+
+section { /* Styles for section */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+section h2 { /* Styles for heading section */
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #ff4081;
+}
+
+#about, #info, #pros-cons { /* Styles for about, info, pros-cons section */
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#about p, #info p, #pros-cons p { /* Styles for paragraph in about, info, pros-cons section */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.highlight { /* Styles for highlight section */
+    background-color: yellow;
+    color: black;
+}
+
+footer { /* Styles for footer section */
+    text-align: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-top: 2px solid #333;
+}
+
+footer .footer-content { /* Styles for footer content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+footer p { /* Styles for footer paragraph */
+    margin: 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+footer .youtube-logo { /* Styles for youtube logo */
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+}
+
+footer a { /* Styles for footer links */
+    text-decoration: none;
+}
+
+.tools-container { /* Styles for tools container */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Styles for tools.html cards */
+.tools-card-style {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.tools-card-style:hover { /* Hover effect for tools card style */
+    transform: translateY(-10px);
+}
+
+.tool-icon { /* Styles for tool icon section */
+    margin-bottom: 20px;
+}
+
+.tool-icon img { /* Styles for tool icon images */
+    width: 50px;
+    height: auto;
+}
+
+.tool-content h3 { /* Styles for tool content heading */
+    margin-bottom: 10px;
+    color: #ff4081;
+}
+
+.tool-content p { /* Styles for tool content paragraph */
+    color: #e0e0e0;
+}
+
+.try-button { /* Styles for try button */
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.try-button:hover { /* Hover effect for try button */
+    background-color: #e03575;
+}
+
+/* Learn Section Styling */
+.learn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.learn-card-style { /* Styles for learn card style */
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    padding: 0;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+}
+
+.learn-card-style:hover { /* Hover effect for learn card style */
+    transform: translateY(-10px);
+}
+
+.learn-thumbnail { /* Styles for learn thumbnail sections */
+    width: 100%;
+    height: auto;
+}
+
+.learn-thumbnail img { /* Styles for learn thumbnail images */
+    width: 100%;
+    height: auto;
+}
+
+.learn-content { /* Styles for learn content section */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.learn-content h3 { /* Styles for learn content heading */
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.learn-content p { /* Styles for learn content paragraph */
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.learn-how { /* Styles for learn how link */
+    color: #ff4081;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.learn-how:hover { /* Hover effect for learn how link */
+    color: #e03575;
+}
+
+#filter-input { /* Styles for filter input */
+    padding: 10px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+#mailing-list { /* Styles for mailing list section */
+    background-color: #1f1f1f;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 2px solid #333;
+}
+
+#mailing-list h2 { /* Styles for mailing list heading section */
+    color: #ff4081;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+#mailing-list p { /* Styles for mailing list paragraph section */
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+#mailing-list-form { /* Styles for mailing list form */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#mailing-list-form input[type="email"] { /* Styles for email input in mailing list form */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: #e0e0e0;
+    width: 300px;
+    max-width: 100%;
+}
+
+#mailing-list-form button { /* Styles for button in mailing list form */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff4081;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#mailing-list-form button:hover { /* Hover effect for mailing list button */
+    background-color: #e03575;
+}
+
+#filter-input-tools, #filter-input-learn { /* Styles for filter input */
+    padding: 10px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: #e0e0e0;
+}
